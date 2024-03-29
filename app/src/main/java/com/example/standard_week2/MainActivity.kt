@@ -21,9 +21,9 @@ class MainActivity : AppCompatActivity() {
         }
 
     }
-    fun showDetail(position: Int, like: Boolean){
+    fun showDetail(position: Int){
         supportFragmentManager.beginTransaction().apply {
-            replace(R.id.fl_fragment, DonutDetailFragment.newInstance(position, like))
+            replace(R.id.fl_fragment, DonutDetailFragment.newInstance(position))
             addToBackStack(null)
             commit()
         }

@@ -5,4 +5,5 @@
     <color name="pink">#FFDAE9</color>
     <color name="heart_pink">#FFC6DE</color>
     <color name="detail_bg">#75FFD3D3</color>
+    <color name="detail_text">#3E061D</color>
 </resources>

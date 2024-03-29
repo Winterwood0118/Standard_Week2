@@ -25,3 +25,5 @@ val nutriList = arrayOf(
     Nutritional("120kcal", "5.2g", "0.2g", "12g"),
     Nutritional("111kcal", "0.2g", "8g", "10g")
     )
+
+val likeList = MutableList(donutList.size){ false }

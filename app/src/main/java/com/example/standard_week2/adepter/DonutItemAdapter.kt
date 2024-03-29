@@ -9,6 +9,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.standard_week2.MainActivity
 import com.example.standard_week2.R
 import com.example.standard_week2.dataclass.DonutItem
+import com.example.standard_week2.likeList
 
 
 class DonutItemAdapter(val itemList: Array<DonutItem>):
@@ -19,7 +20,6 @@ class DonutItemAdapter(val itemList: Array<DonutItem>):
         val tv_price = itemView.findViewById<TextView>(R.id.tv_price_item)
         val iv_item = itemView.findViewById<ImageView>(R.id.iv_item)
         var iv_like = itemView.findViewById<ImageView>(R.id.iv_like_item)
-        var isLike = false
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerViewHolder {
@@ -37,18 +37,26 @@ class DonutItemAdapter(val itemList: Array<DonutItem>):
         holder.iv_item.apply {
             setImageResource(itemList[position].image)
             setOnClickListener{
-                (context as MainActivity).showDetail(position, holder.isLike)
+                (context as MainActivity).showDetail(position)
             }
         }
-
-        holder.iv_like.setOnClickListener{
-            if(holder.isLike) {
-                it.setBackgroundResource(R.color.white)
+        holder.iv_like.apply {
+            setBackgroundResource(
+                if (likeList[position]) {
+                    R.drawable.ic_heart_filled
+                }else {
+                    R.color.white
+                }
+            )
+            setOnClickListener{
+                if(likeList[position]) {
+                    it.setBackgroundResource(R.color.white)
+                }
+                else {
+                    it.setBackgroundResource(R.drawable.ic_heart_filled)
+                }
+                likeList[position] = !likeList[position]
             }
-            else {
-                it.setBackgroundResource(R.drawable.ic_heart_filled)
-            }
-            holder.isLike = !holder.isLike
         }
     }
 }
