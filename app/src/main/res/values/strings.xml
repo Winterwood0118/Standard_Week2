@@ -2,4 +2,8 @@
     <string name="app_name">Standard_Week2</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="test">Lorem ipsum dolor sit amet, consectetur adipiscing elit.\n
+        Diam maecenas mi non sed ut odio. Non, justo, sed facilisi et.\n
+        Eget viverra urna, vestibulum egestas faucibus egestas.\n
+        Sagittis nam velit volutpat eu nunc.</string>
 </resources>

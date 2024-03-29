@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id = "@+id/custom_item"
+    android:layout_width="120dp"
+    android:layout_height="80dp"
+    android:paddingTop = "10dp"
+    android:paddingBottom="10dp"
+    android:paddingEnd="15dp">
+
+    <ImageView
+        android:id="@+id/custom_bg"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:src="@drawable/bg_nutri"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/tv_value_custom"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="5.8g"
+        app:layout_constraintBottom_toBottomOf="@+id/custom_bg"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/custom_bg"
+        app:layout_constraintTop_toTopOf="@+id/custom_bg"
+        app:layout_constraintVertical_bias="0.3"/>
+
+    <TextView
+        android:id="@+id/tv_type_custom"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Protains"
+        android:textSize="8sp"
+        app:layout_constraintBottom_toBottomOf="@+id/custom_bg"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tv_value_custom"
+        app:layout_constraintVertical_bias="0.6"/>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
