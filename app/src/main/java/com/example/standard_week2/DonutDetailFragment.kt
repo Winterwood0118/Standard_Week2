@@ -6,6 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
+import androidx.core.os.bundleOf
 import com.example.standard_week2.databinding.FragmentDonutDetailBinding
 
 private const val ARG_INDEX = "param1"
@@ -84,5 +85,12 @@ class DonutDetailFragment : Fragment() {
                     putInt(ARG_INDEX, param1)
                 }
             }
+    }
+
+    override fun onDestroyView() {
+        super.onDestroyView()
+        val arg: Bundle = bundleOf(
+            //"is_like" to
+        )
     }
 }

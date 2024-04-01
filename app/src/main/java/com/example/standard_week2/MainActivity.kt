@@ -21,7 +21,7 @@ class MainActivity : AppCompatActivity() {
         }
 
     }
-    fun showDetail(position: Int){
+    fun showDetail(position: Int){ // 얘를 데이터 클래스 받아오게 하기
         supportFragmentManager.beginTransaction().apply {
             replace(R.id.fl_fragment, DonutDetailFragment.newInstance(position))
             addToBackStack(null)

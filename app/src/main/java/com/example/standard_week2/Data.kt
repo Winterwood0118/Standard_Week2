@@ -27,3 +27,5 @@ val nutriList = arrayOf(
     )
 
 val likeList = MutableList(donutList.size){ false }
+
+//textView의
