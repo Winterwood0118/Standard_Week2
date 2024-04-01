@@ -19,7 +19,12 @@ class DonutItemAdapter(val itemList: Array<DonutItem>):
         val tv_name = itemView.findViewById<TextView>(R.id.tv_name_item)
         val tv_price = itemView.findViewById<TextView>(R.id.tv_price_item)
         val iv_item = itemView.findViewById<ImageView>(R.id.iv_item)
-        var iv_like = itemView.findViewById<ImageView>(R.id.iv_like_item)
+        val iv_like = itemView.findViewById<ImageView>(R.id.iv_like_item)
+
+        var isLike = false
+        val test = "test"
+
+
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerViewHolder {
@@ -32,6 +37,9 @@ class DonutItemAdapter(val itemList: Array<DonutItem>):
     }
 
     override fun onBindViewHolder(holder: RecyclerViewHolder, position: Int) {
+        val donutInfo by lazy{
+            DonutItem(holder.tv_name.text.toString(), holder.tv_price.text.toString(), itemList[position].image  )
+        }
         holder.tv_name.text = itemList[position].name
         holder.tv_price.text = itemList[position].price
         holder.iv_item.apply {
@@ -42,7 +50,7 @@ class DonutItemAdapter(val itemList: Array<DonutItem>):
         }
         holder.iv_like.apply {
             setBackgroundResource(
-                if (likeList[position]) {
+                if (holder.isLike) {
                     R.drawable.ic_heart_filled
                 }else {
                     R.color.white
@@ -55,7 +63,7 @@ class DonutItemAdapter(val itemList: Array<DonutItem>):
                 else {
                     it.setBackgroundResource(R.drawable.ic_heart_filled)
                 }
-                likeList[position] = !likeList[position]
+                holder.isLike = !holder.isLike
             }
         }
     }
