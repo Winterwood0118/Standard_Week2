@@ -6,30 +6,36 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.GridLayoutManager
-import androidx.recyclerview.widget.RecyclerView
+import com.example.standard_week2.adepter.DonutItemAdapter
+import com.example.standard_week2.databinding.FragmentDonutListBinding
 
 class DonutListFragment : Fragment() {
+    lateinit var binding: FragmentDonutListBinding
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
+        binding = FragmentDonutListBinding.inflate(inflater, container, false)
 
-        val view = inflater.inflate(R.layout.fragment_donut_list, container, false)
-        val rv_list = view.findViewById<RecyclerView>(R.id.rv_list)
         val listManager = GridLayoutManager(context,2)
-        val listAdapter = RecyclerViewAdapter(donutList)
+        val listAdapter = DonutItemAdapter(donutList)
 
-        rv_list.apply {
+        binding.rvList.apply {
             setHasFixedSize(true)
             layoutManager = listManager
             adapter = listAdapter
         }
 
-        return view
+        return binding.root
     }
 
-    companion object {
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
 
+    }
+
+
+    companion object {
         @JvmStatic
         fun newInstance() = DonutListFragment()
     }

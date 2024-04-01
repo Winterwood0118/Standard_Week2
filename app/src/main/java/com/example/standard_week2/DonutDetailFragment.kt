@@ -5,27 +5,20 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageView
+import com.example.standard_week2.databinding.FragmentDonutDetailBinding
 
-// TODO: Rename parameter arguments, choose names that match
-// the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-private const val ARG_PARAM1 = "param1"
-private const val ARG_PARAM2 = "param2"
+private const val ARG_INDEX = "param1"
 
-/**
- * A simple [Fragment] subclass.
- * Use the [DonutDetailFragment.newInstance] factory method to
- * create an instance of this fragment.
- */
 class DonutDetailFragment : Fragment() {
-    // TODO: Rename and change types of parameters
-    private var param1: String? = null
-    private var param2: String? = null
+
+    private var index: Int? = null
+    lateinit var binding: FragmentDonutDetailBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         arguments?.let {
-            param1 = it.getString(ARG_PARAM1)
-            param2 = it.getString(ARG_PARAM2)
+            index = it.getInt(ARG_INDEX)
         }
     }
 
@@ -34,25 +27,61 @@ class DonutDetailFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_donut_detail, container, false)
+        binding = FragmentDonutDetailBinding.inflate(inflater, container, false)
+        // 칼 단 지 당
+        binding.ivItemDetail.setImageResource(donutList[index ?: 0].image)
+        binding.tvNameDetail.text = donutList[index ?: 0].name
+
+        binding.customCalories.tvValueCustom.text = nutriList[index ?: 0].calories
+        binding.customCalories.tvTypeCustom.text = nutriType[0]
+
+        binding.customProteins.tvValueCustom.text = nutriList[index ?: 0].proteins
+        binding.customProteins.tvTypeCustom.text = nutriType[1]
+
+        binding.customFats.tvValueCustom.text = nutriList[index ?: 0].fats
+        binding.customFats.tvTypeCustom.text = nutriType[2]
+
+        binding.customSugars.tvValueCustom.text = nutriList[index ?: 0].sugars
+        binding.customSugars.tvTypeCustom.text = nutriType[3]
+
+        binding.ibLikeDetail.setImageResource(
+            if (likeList[index ?: 0]) R.drawable.ic_heart_filled
+            else R.drawable.ic_heart_empty
+        )
+
+        return binding.root
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
+        val iv_close = view.findViewById<ImageView>(R.id.iv_close_detail)
+
+        iv_close.setOnClickListener {
+            activity?.supportFragmentManager?.apply {
+                beginTransaction().remove(this@DonutDetailFragment).commit()
+                popBackStack()
+            }
+        }
+        binding.ibLikeDetail.apply {
+            setOnClickListener {
+                if (likeList[index!!]) {
+                    likeList[index!!] = false
+                    setImageResource(R.drawable.ic_heart_empty)
+                } else {
+                    likeList[index!!] = true
+                    setImageResource(R.drawable.ic_heart_filled)
+                }
+            }
+        }
     }
 
     companion object {
-        /**
-         * Use this factory method to create a new instance of
-         * this fragment using the provided parameters.
-         *
-         * @param param1 Parameter 1.
-         * @param param2 Parameter 2.
-         * @return A new instance of fragment DonutDetailFragment.
-         */
-        // TODO: Rename and change types and number of parameters
         @JvmStatic
-        fun newInstance(param1: String, param2: String) =
+        fun newInstance(param1: Int) =
             DonutDetailFragment().apply {
                 arguments = Bundle().apply {
-                    putString(ARG_PARAM1, param1)
-                    putString(ARG_PARAM2, param2)
+                    putInt(ARG_INDEX, param1)
                 }
             }
     }
