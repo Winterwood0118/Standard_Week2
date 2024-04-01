@@ -19,7 +19,7 @@ class DonutItemAdapter(val itemList: Array<DonutItem>):
         val tv_name = itemView.findViewById<TextView>(R.id.tv_name_item)
         val tv_price = itemView.findViewById<TextView>(R.id.tv_price_item)
         val iv_item = itemView.findViewById<ImageView>(R.id.iv_item)
-        var iv_like = itemView.findViewById<ImageView>(R.id.iv_like_item)
+        val iv_like = itemView.findViewById<ImageView>(R.id.iv_like_item)
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerViewHolder {
