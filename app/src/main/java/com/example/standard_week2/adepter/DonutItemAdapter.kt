@@ -11,7 +11,7 @@ import com.example.standard_week2.R
 import com.example.standard_week2.dataclass.DonutItem
 import com.example.standard_week2.likeList
 
-
+//하는중
 class DonutItemAdapter(val itemList: Array<DonutItem>):
     RecyclerView.Adapter<DonutItemAdapter.RecyclerViewHolder>() {
 
